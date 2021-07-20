@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# data bath linking strings
+/WindowsFormsApp3/paths/*

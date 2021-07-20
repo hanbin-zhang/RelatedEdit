@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace RelatedEdit
 {
@@ -14,6 +15,7 @@ namespace RelatedEdit
     {
         public FMain()
         {
+            
             InitializeComponent();
         }
 
@@ -80,9 +82,12 @@ namespace RelatedEdit
                 {
                     DataTable DT = DAL.LoadT2Data(index);
                     //绑定T2数据到子列表
+                    gridControl2.DataSource = DT;
+                    gridView2.RefreshData();
                 }
+
                 
-                
+                MessageBox.Show(gridView1.GetFocusedRowCellValue("Name").ToString());
             }
         }
 
