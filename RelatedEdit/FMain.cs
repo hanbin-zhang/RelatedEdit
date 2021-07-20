@@ -47,20 +47,7 @@ namespace RelatedEdit
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-            DataTable DT = new DataTable("TableDemo");
-
-            DT.Columns.Add("Index", typeof(System.Int16));
-            DT.Columns.Add("Name", typeof(System.String));
-
-            DT.Rows.Add(6, "注塑");
-            DT.Rows.Add(7, "焊接");
-            DT.Rows.Add(8, "热缩");
-            DT.Rows.Add(9, "初装");
-            DT.Rows.Add(10, "布线");
-
-
-            gridControl1.DataSource = DT;
+            gridControl1.DataSource = DAL.LoadT1Data();
             gridView1.RefreshData();
         }
 
@@ -84,16 +71,14 @@ namespace RelatedEdit
                     //绑定T2数据到子列表
                     gridControl2.DataSource = DT;
                     gridView2.RefreshData();
+                    MessageBox.Show("我是你爹");
                 }
-
-                
-                MessageBox.Show(gridView1.GetFocusedRowCellValue("Name").ToString());
             }
         }
 
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
-
+            MessageBox.Show("无不无聊");
         }
     }
 }
