@@ -341,3 +341,5 @@ healthchecksdb
 
 # data bath linking strings
 /WindowsFormsApp3/paths/*
+
+connectionString.txt
