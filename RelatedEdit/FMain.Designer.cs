@@ -127,6 +127,7 @@
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
+            this.gridControl2.Click += new System.EventHandler(this.gridControl2_Click);
             // 
             // gridView2
             // 
@@ -195,6 +196,7 @@
             // gridColumn5
             // 
             this.gridColumn5.Caption = "Index";
+            this.gridColumn5.FieldName = "Index";
             this.gridColumn5.MinWidth = 27;
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
@@ -204,6 +206,7 @@
             // gridColumn6
             // 
             this.gridColumn6.Caption = "T1 Class Name";
+            this.gridColumn6.FieldName = "Name";
             this.gridColumn6.MinWidth = 27;
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;

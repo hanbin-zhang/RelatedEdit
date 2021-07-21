@@ -67,18 +67,42 @@ namespace RelatedEdit
 
                 if (int.TryParse(cellvalue, out index))
                 {
-                    DataTable DT = DAL.LoadT2Data(index);
+                    DataTable DT = DAL.LoadDefectiveData(index, DAL.table.T2);
                     //绑定T2数据到子列表
                     gridControl2.DataSource = DT;
                     gridView2.RefreshData();
-                    MessageBox.Show("我是你爹");
+                    // MessageBox.Show("我是你爹");
                 }
             }
         }
 
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
-            MessageBox.Show("无不无聊");
+            // MessageBox.Show("无不无聊");
+        }
+
+        private void gridControl2_Click(object sender, EventArgs e)
+        {
+            if (gridView2.RowCount == 0)
+            {
+                return;
+            }
+
+            if (gridView2.GetFocusedRow() != null)
+            {
+                string cellvalue = gridView2.GetFocusedRowCellValue("Index").ToString();
+
+                int index = -1;
+
+                if (int.TryParse(cellvalue, out index))
+                {
+                    DataTable DT = DAL.LoadDefectiveData(index, DAL.table.T3);
+                    //绑定T3数据到子列表
+                    gridControl3.DataSource = DT;
+                    gridView3.RefreshData();
+                    // MessageBox.Show("我是你爹");
+                }
+            }
         }
     }
 }
