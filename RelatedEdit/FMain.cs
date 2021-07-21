@@ -78,7 +78,7 @@ namespace RelatedEdit
 
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
-            // MessageBox.Show("无不无聊");
+            MessageBox.Show("无不无聊");
         }
 
         private void gridControl2_Click(object sender, EventArgs e)
@@ -100,7 +100,7 @@ namespace RelatedEdit
                     //绑定T3数据到子列表
                     gridControl3.DataSource = DT;
                     gridView3.RefreshData();
-                    // MessageBox.Show("我是你爹");
+                    MessageBox.Show("我是你爹");
                 }
             }
         }
