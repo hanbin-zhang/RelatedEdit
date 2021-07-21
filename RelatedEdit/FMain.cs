@@ -15,8 +15,8 @@ namespace RelatedEdit
     {
         public FMain()
         {
-            
             InitializeComponent();
+            InitializecomboBoxforDelete(comboBoxforDelete);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -102,6 +102,27 @@ namespace RelatedEdit
                     gridView3.RefreshData();
                     MessageBox.Show("我是你爹");
                 }
+            }
+        }
+
+        public static void InitializecomboBoxforDelete (ComboBox comboBoxforDelete)
+        {
+            comboBoxforDelete.Items.Add("T1 GX项");
+            comboBoxforDelete.Items.Add("T2 错误1");
+            comboBoxforDelete.Items.Add("T3 错误2");
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (comboBoxforDelete.SelectedItem == null)
+            {
+                MessageBox.Show("请选择需要删除的类别");
+            }
+
+            else
+            {
+
             }
         }
     }
