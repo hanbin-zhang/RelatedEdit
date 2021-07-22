@@ -74,6 +74,9 @@ namespace RelatedEdit
                     // MessageBox.Show("我是你爹");
                 }
             }
+            //启用 “ 增” 按钮
+            button3.Enabled = true;
+            
         }
 
         private void gridControl1_DoubleClick(object sender, EventArgs e)
@@ -103,6 +106,12 @@ namespace RelatedEdit
                     MessageBox.Show("我是你爹");
                 }
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Add a = new Add();
+            a.Show();
         }
     }
 }

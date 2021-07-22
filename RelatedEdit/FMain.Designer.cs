@@ -33,6 +33,7 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cardView1 = new DevExpress.XtraGrid.Views.Card.CardView();
             this.button1 = new System.Windows.Forms.Button();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -44,12 +45,14 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
@@ -60,14 +63,15 @@
             // gridControl1
             // 
             this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            this.gridControl1.Location = new System.Drawing.Point(16, 53);
+            this.gridControl1.Location = new System.Drawing.Point(16, 50);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(4);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(441, 431);
+            this.gridControl1.Size = new System.Drawing.Size(441, 404);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gridView1,
+            this.cardView1});
             this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             this.gridControl1.DoubleClick += new System.EventHandler(this.gridControl1_DoubleClick);
             // 
@@ -76,7 +80,7 @@
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2});
-            this.gridView1.DetailHeight = 467;
+            this.gridView1.DetailHeight = 438;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DevExpress.Utils.DefaultBoolean.False;
@@ -107,12 +111,17 @@
             this.gridColumn2.VisibleIndex = 1;
             this.gridColumn2.Width = 339;
             // 
+            // cardView1
+            // 
+            this.cardView1.GridControl = this.gridControl1;
+            this.cardView1.Name = "cardView1";
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(940, 70);
+            this.button1.Location = new System.Drawing.Point(940, 66);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(409, 31);
+            this.button1.Size = new System.Drawing.Size(409, 29);
             this.button1.TabIndex = 1;
             this.button1.Text = "Bound Demo Data In List  (T1 Only)";
             this.button1.UseVisualStyleBackColor = true;
@@ -121,11 +130,11 @@
             // gridControl2
             // 
             this.gridControl2.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            this.gridControl2.Location = new System.Drawing.Point(474, 53);
+            this.gridControl2.Location = new System.Drawing.Point(474, 50);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Margin = new System.Windows.Forms.Padding(4);
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(441, 431);
+            this.gridControl2.Size = new System.Drawing.Size(441, 404);
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -136,7 +145,7 @@
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn3,
             this.gridColumn4});
-            this.gridView2.DetailHeight = 467;
+            this.gridView2.DetailHeight = 438;
             this.gridView2.GridControl = this.gridControl2;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.AlignGroupSummaryInGroupRow = DevExpress.Utils.DefaultBoolean.False;
@@ -170,11 +179,11 @@
             // gridControl3
             // 
             this.gridControl3.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            this.gridControl3.Location = new System.Drawing.Point(16, 492);
+            this.gridControl3.Location = new System.Drawing.Point(16, 461);
             this.gridControl3.MainView = this.gridView3;
             this.gridControl3.Margin = new System.Windows.Forms.Padding(4);
             this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(899, 421);
+            this.gridControl3.Size = new System.Drawing.Size(899, 395);
             this.gridControl3.TabIndex = 3;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -184,7 +193,7 @@
             this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn5,
             this.gridColumn6});
-            this.gridView3.DetailHeight = 467;
+            this.gridView3.DetailHeight = 438;
             this.gridView3.GridControl = this.gridControl3;
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsBehavior.AlignGroupSummaryInGroupRow = DevExpress.Utils.DefaultBoolean.False;
@@ -217,10 +226,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(940, 131);
+            this.button2.Location = new System.Drawing.Point(940, 123);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(409, 31);
+            this.button2.Size = new System.Drawing.Size(409, 29);
             this.button2.TabIndex = 4;
             this.button2.Text = "Bound Demo Data In Database  (T1 Only) use this please\r\n ";
             this.button2.UseVisualStyleBackColor = true;
@@ -240,15 +249,6 @@
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 24);
-            this.toolStripButton1.Text = "toolStripButton1";
-            // 
             // toolStripButton2
             // 
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -261,8 +261,17 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(111, 24);
+            this.toolStripLabel1.Size = new System.Drawing.Size(122, 24);
             this.toolStripLabel1.Text = "toolStripLabel1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton1.Text = "toolStripButton1";
             // 
             // toolStripDropDownButton1
             // 
@@ -273,11 +282,23 @@
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(34, 24);
             this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
             // 
+            // button3
+            // 
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(940, 442);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(146, 40);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "增";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // FMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1387, 926);
+            this.ClientSize = new System.Drawing.Size(1387, 868);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.gridControl3);
@@ -289,6 +310,7 @@
             this.Text = "RelatedEdit";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
@@ -321,6 +343,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private DevExpress.XtraGrid.Views.Card.CardView cardView1;
+        private System.Windows.Forms.Button button3;
     }
 }
 
