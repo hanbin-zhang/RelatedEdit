@@ -114,6 +114,8 @@ namespace RelatedEdit
 
         private void button3_Click(object sender, EventArgs e)
         {
+            String item_name = "";
+            String item_index = "";
             DAL.table table_type = DAL.table.T1;
             if (comboBoxforDelete.SelectedItem == null)
             {
@@ -123,15 +125,42 @@ namespace RelatedEdit
             else if (comboBoxforDelete.SelectedItem.ToString() == "T1 GX项")
             {
                 if (gridView1.GetFocusedRowCellValue("Index") == null) { MessageBox.Show("请先选择需要删除的项"); return; }
+                item_index = gridView1.GetFocusedRowCellValue("Index").ToString();
+                item_name = gridView1.GetFocusedRowCellValue("Name").ToString();
                 table_type = DAL.table.T1;
             }
-            else if (comboBoxforDelete.SelectedItem.ToString() == "T2 错误1") table_type = DAL.table.T2;
-            else if (comboBoxforDelete.SelectedItem.ToString() == "T3 错误2") table_type = DAL.table.T3;
-
+            else if (comboBoxforDelete.SelectedItem.ToString() == "T2 错误1")
+            {
+                if (gridView2.GetFocusedRowCellValue("Index") == null) { MessageBox.Show("请先选择需要删除的项"); return; }
+                item_index = gridView2.GetFocusedRowCellValue("Index").ToString();
+                item_name = gridView2.GetFocusedRowCellValue("Name").ToString();
+                table_type = DAL.table.T2;
+            }
+            else if (comboBoxforDelete.SelectedItem.ToString() == "T3 错误2")
+            {
+                if (gridView3.GetFocusedRowCellValue("Index") == null) { MessageBox.Show("请先选择需要删除的项"); return; }
+                item_index = gridView3.GetFocusedRowCellValue("Index").ToString();
+                item_name = gridView3.GetFocusedRowCellValue("Name").ToString();
+                table_type = DAL.table.T3;
+            }
             // 打开确认删除窗口
-            Form confirmation_form = new delete_confirmation("demo", table_type);
+            Form confirmation_form = new delete_confirmation(item_name, table_type, item_index);
             confirmation_form.ShowDialog();
 
+            // 重新加载窗体
+            reload_form();
+            
+        }
+
+        public void reload_form()
+        {
+            this.Hide(); //先隐藏主窗体
+
+            Form form1 = new FMain(); //重新实例化此窗体
+
+            form1.ShowDialog();//已模式窗体的方法重新打开
+
+            this.Close();
         }
     }
 }

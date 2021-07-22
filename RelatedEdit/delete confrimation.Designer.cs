@@ -34,20 +34,21 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(40, 35);
+            this.label1.Location = new System.Drawing.Point(29, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(560, 155);
+            this.label1.Size = new System.Drawing.Size(510, 165);
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(459, 233);
+            this.button1.Location = new System.Drawing.Point(459, 222);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 23);
+            this.button1.Size = new System.Drawing.Size(80, 34);
             this.button1.TabIndex = 1;
             this.button1.Text = "确定";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // delete_confirmation
             // 
@@ -56,6 +57,8 @@
             this.ClientSize = new System.Drawing.Size(566, 274);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "delete_confirmation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "确认删除";
