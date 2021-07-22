@@ -100,7 +100,6 @@ namespace RelatedEdit
                     //绑定T3数据到子列表
                     gridControl3.DataSource = DT;
                     gridView3.RefreshData();
-                    MessageBox.Show("我是你爹");
                 }
             }
         }
@@ -115,15 +114,24 @@ namespace RelatedEdit
 
         private void button3_Click(object sender, EventArgs e)
         {
+            DAL.table table_type = DAL.table.T1;
             if (comboBoxforDelete.SelectedItem == null)
             {
                 MessageBox.Show("请选择需要删除的类别");
+                return;
             }
-
-            else
+            else if (comboBoxforDelete.SelectedItem.ToString() == "T1 GX项")
             {
-
+                if (gridView1.GetFocusedRowCellValue("Index") == null) { MessageBox.Show("请先选择需要删除的项"); return; }
+                table_type = DAL.table.T1;
             }
+            else if (comboBoxforDelete.SelectedItem.ToString() == "T2 错误1") table_type = DAL.table.T2;
+            else if (comboBoxforDelete.SelectedItem.ToString() == "T3 错误2") table_type = DAL.table.T3;
+
+            // 打开确认删除窗口
+            Form confirmation_form = new delete_confirmation("demo", table_type);
+            confirmation_form.ShowDialog();
+
         }
     }
 }

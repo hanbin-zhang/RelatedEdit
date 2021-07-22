@@ -35,6 +35,7 @@ namespace RelatedEdit
         }
         public enum table
         {
+            T1,
             T2,
             T3
         }

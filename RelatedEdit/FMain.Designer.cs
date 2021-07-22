@@ -49,7 +49,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.comboBoxforDelete = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.delete_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
@@ -284,22 +284,22 @@
             this.comboBoxforDelete.TabIndex = 6;
             this.comboBoxforDelete.Text = "选择需要删除的类别";
             // 
-            // button3
+            // delete_button
             // 
-            this.button3.Location = new System.Drawing.Point(940, 191);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 31);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "删除所选项";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.delete_button.Location = new System.Drawing.Point(940, 191);
+            this.delete_button.Name = "delete_button";
+            this.delete_button.Size = new System.Drawing.Size(100, 31);
+            this.delete_button.TabIndex = 7;
+            this.delete_button.Text = "删除所选项";
+            this.delete_button.UseVisualStyleBackColor = true;
+            this.delete_button.Click += new System.EventHandler(this.button3_Click);
             // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1387, 926);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.delete_button);
             this.Controls.Add(this.comboBoxforDelete);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.button2);
@@ -345,7 +345,7 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ComboBox comboBoxforDelete;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button delete_button;
     }
 }
 

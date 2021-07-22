@@ -65,8 +65,17 @@
     <Compile Include="FMain.Designer.cs">
       <DependentUpon>FMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="delete confrimation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="delete confrimation.Designer.cs">
+      <DependentUpon>delete confrimation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="delete confrimation.resx">
+      <DependentUpon>delete confrimation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
     </EmbeddedResource>
