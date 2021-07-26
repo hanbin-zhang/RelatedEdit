@@ -1,6 +1,6 @@
 ﻿namespace RelatedEdit
 {
-    partial class delete_confirmation
+    partial class confrimationWindow
     {
         /// <summary>
         /// Required designer variable.

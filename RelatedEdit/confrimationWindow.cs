@@ -9,18 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RelatedEdit
-{
-    public partial class delete_confirmation : Form
+{   
+    public partial class confrimationWindow : Form
     {
         DAL.table table_type;
         String delete_index1;
+        sql_interactor interactor;
 
-        public delete_confirmation(string delete_info, DAL.table table, String delete_index)
+        public confrimationWindow(string item_name, DAL.table table, String item_index, interaction_type type)
         {
             InitializeComponent();
-            label1.Text = "请问确定要删除" + table.ToString() + "表下所属的" + delete_info + "及其所有下属关联项吗？";
+            // 根据函数给定的参数来判断初始化哪一种Interactor
+            if (type == interaction_type.delete) interactor = new DeleteInteractor();
+            label1.Text = string.Format(interactor.getConfirmationMessage(), table.ToString(), item_name);
             table_type = table;
-            delete_index1 = delete_index;
+            delete_index1 = item_index;
         }
 
         private void delete_confirmation_Load(object sender, EventArgs e)
@@ -30,20 +33,20 @@ namespace RelatedEdit
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        { 
             if (table_type == DAL.table.T3)
             {
-                DeleteFromSQL.deleteFromT3(delete_index1);
+                interactor.interactT3(delete_index1);
             }
             else if (table_type == DAL.table.T2)
             {
-                DeleteFromSQL.deleteFromT2(delete_index1);
+                interactor.interactT2(delete_index1);
             }
             else if (table_type == DAL.table.T1)
             {
-                DeleteFromSQL.deleteFromT1(delete_index1);
+                interactor.interactT1(delete_index1);
             }
-            MessageBox.Show("删除成功");
+            MessageBox.Show(interactor.getFinishMessage());
             this.Close();
         }
     }

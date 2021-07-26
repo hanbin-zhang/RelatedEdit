@@ -143,8 +143,8 @@ namespace RelatedEdit
                 item_name = gridView3.GetFocusedRowCellValue("Name").ToString();
                 table_type = DAL.table.T3;
             }
-            // 打开确认删除窗口
-            Form confirmation_form = new delete_confirmation(item_name, table_type, item_index);
+            // 打开确认窗口, c
+            Form confirmation_form = new confrimationWindow(item_name, table_type, item_index, interaction_type.delete);
             confirmation_form.ShowDialog();
 
             // 重新加载窗体

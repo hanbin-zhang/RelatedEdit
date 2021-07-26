@@ -28,4 +28,11 @@ namespace RelatedEdit
 
         }
     }
+
+    public enum interaction_type
+    {
+        delete,
+        add,
+        change
+    }
 }
