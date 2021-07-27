@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.spreadsheetBarController1 = new DevExpress.XtraSpreadsheet.UI.SpreadsheetBarController(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.spreadsheetBarController1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -61,6 +64,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ExportToExcel";
             this.Text = "请选择导出路径";
+            ((System.ComponentModel.ISupportInitialize)(this.spreadsheetBarController1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -69,5 +73,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private DevExpress.XtraSpreadsheet.UI.SpreadsheetBarController spreadsheetBarController1;
     }
 }
