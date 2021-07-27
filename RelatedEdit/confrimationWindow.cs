@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace RelatedEdit
 {   
-    public partial class confrimationWindow : Form
+    public partial class ConfrimationWindow : Form
     {
-        DAL.table table_type;
-        String delete_index1;
-        sql_interactor interactor;
+        private readonly DAL.table table_type;
+        readonly String delete_index1;
+        readonly sql_interactor interactor;
 
-        public confrimationWindow(string item_name, DAL.table table, String item_index, interaction_type type)
+        public ConfrimationWindow(string item_name, DAL.table table, String item_index, interaction_type type)
         {
             InitializeComponent();
             // 根据函数给定的参数来判断初始化哪一种Interactor

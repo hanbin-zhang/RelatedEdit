@@ -72,11 +72,20 @@
     <Compile Include="confrimationWindow.Designer.cs">
       <DependentUpon>confrimationWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExportToExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportToExcel.Designer.cs">
+      <DependentUpon>ExportToExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="sql_interactor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="confrimationWindow.resx">
       <DependentUpon>confrimationWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportToExcel.resx">
+      <DependentUpon>ExportToExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
