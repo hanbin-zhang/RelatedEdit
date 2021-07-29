@@ -112,11 +112,6 @@ namespace RelatedEdit
 
         }
 
-        private void Button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         public void Reload_form()
         {
             this.Hide(); //先隐藏主窗体
@@ -137,6 +132,67 @@ namespace RelatedEdit
         private void FMain_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int a = gridViewselectHelper(out string item_name, out string item_index, out DAL.table table_type);
+
+            if (a == 0) return;
+            // 打开确认删除窗口
+            // 打开确认窗口, c
+            Form confirmation_form = new ConfirmationWindow(item_name, table_type, item_index, interaction_type.change);
+            confirmation_form.ShowDialog();
+
+            // 重新加载窗体
+            Reload_form();
+        }
+
+        private void delete_click(object sender, EventArgs e)
+        {
+            int a = gridViewselectHelper(out string item_name, out string item_index, out DAL.table table_type);
+            if (a == 0) return;
+            // 打开确认删除窗口
+            // 打开确认窗口, c
+            Form confirmation_form = new ConfirmationWindow(item_name, table_type, item_index, interaction_type.delete);
+            confirmation_form.ShowDialog();
+
+            // 重新加载窗体
+            Reload_form();
+        }
+
+        private int gridViewselectHelper(out string item_name, out String item_index, out DAL.table table_type)
+        {
+            item_name = "";
+            item_index = "";
+            table_type = DAL.table.T1;
+            if (comboBoxforDelete.SelectedItem == null)
+            {
+                MessageBox.Show("请选择需要操作的类别");
+                return 0;
+            }
+            else if (comboBoxforDelete.SelectedItem.ToString() == "T1 GX项")
+            {
+                if (gridView1.GetFocusedRowCellValue("Index") == null) { MessageBox.Show("请先选择需要操作的项"); return 0; }
+                item_index = gridView1.GetFocusedRowCellValue("Index").ToString();
+                item_name = gridView1.GetFocusedRowCellValue("Name").ToString();
+                table_type = DAL.table.T1;
+            }
+            else if (comboBoxforDelete.SelectedItem.ToString() == "T2 错误1")
+            {
+                if (gridView2.GetFocusedRowCellValue("Index") == null) { MessageBox.Show("请先选择需要操作的项"); return 0; }
+                item_index = gridView2.GetFocusedRowCellValue("Index").ToString();
+                item_name = gridView2.GetFocusedRowCellValue("Name").ToString();
+                table_type = DAL.table.T2;
+            }
+            else if (comboBoxforDelete.SelectedItem.ToString() == "T3 错误2")
+            {
+                if (gridView3.GetFocusedRowCellValue("Index") == null) { MessageBox.Show("请先选择需要操作的项"); return 0; }
+                item_index = gridView3.GetFocusedRowCellValue("Index").ToString();
+                item_name = gridView3.GetFocusedRowCellValue("Name").ToString();
+                table_type = DAL.table.T3;
+            }
+            return 1;
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using DevExpress.Spreadsheet;
 using System.IO;
+using static System.Convert;
 
 namespace RelatedEdit
 {
@@ -26,7 +27,7 @@ namespace RelatedEdit
             {
                 SqlConnection conn = new SqlConnection(Common.ConnString);
                 conn.Open();
-                string SQL = "SELECT GX_NAME, Defective, Defective2 FROM [NCMR].[dbo].[T1_GX] AS T1 LEFT JOIN [NCMR].[dbo].[T2_Defective] AS T2 ON T1.GX_NO = T2.GX_NO LEFT JOIN [NCMR].[dbo].[T3_Defective2] AS T3 ON T2.TD2_NO = T3.TD2_NO; ";
+                string SQL = "SELECT T1.GX_NO, GX_NAME, T2.TD2_NO, Defective, T3.TD3_NO, Defective2 FROM [NCMR].[dbo].[T1_GX] AS T1 LEFT JOIN [NCMR].[dbo].[T2_Defective] AS T2 ON T1.GX_NO = T2.GX_NO LEFT JOIN [NCMR].[dbo].[T3_Defective2] AS T3 ON T2.TD2_NO = T3.TD2_NO; ";
                 Workbook workbook = new Workbook();
                 workbook.CreateNewDocument();
                 using (SqlCommand sc = new SqlCommand(SQL, conn))
@@ -39,25 +40,54 @@ namespace RelatedEdit
                         {
                             Row row = workbook.Worksheets[0].Rows[n];
                             IDataRecord dataRow = (IDataRecord)sdr;
-                            row[0].Value = dataRow[0].ToString();
-                            row[1].Value = dataRow[1].ToString();
-                            row[2].Value = dataRow[2].ToString();
+                            for (int i = 0; i<=5; i++)
+                            {   
+                                if (dataRow[i].ToString() == "") row[i].Value = dataRow[i].ToString();
+                                else if ((i%2)==0) row[i].Value = ToInt32(dataRow[i].ToString());
+                                else row[i].Value = dataRow[i].ToString();
+                            }
                             n += 1;
                         }
                     }
                 }
                 conn.Close();
 
-                workbook.Worksheets[0].Columns[0].AutoFit();
-                workbook.Worksheets[0].Columns[1].AutoFit();
-                workbook.Worksheets[0].Columns[2].AutoFit();
-                workbook.SaveDocument("SavedDocument.xlsx", DocumentFormat.Xlsx);
+                for (int i = 0; i <= 5; i++)
+                {
+                    workbook.Worksheets[0].Columns[i].AutoFit();
+                }
+                workbook.SaveDocument(saveFileDialog1.FileName, DocumentFormat.Xlsx);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             MessageBox.Show("导出成功");
+            this.Close();
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.saveFileDialog1.InitialDirectory = @".\export files";
+            this.saveFileDialog1.Filter = "EXCEL FILE WITH MACRO(*.xlsm)|*.xlsm";
+            this.saveFileDialog1.RestoreDirectory = true;
+            this.saveFileDialog1.FileName = String.Format("SavedDocument-{0}.xlsx", DateTime.Now.ToString("yyyyMMdd"));
+
+            DialogResult dr = this.saveFileDialog1.ShowDialog();
+            if (dr == DialogResult.OK && this.saveFileDialog1.FileName.Length > 0)
+            {
+                this.textBox1.Text = saveFileDialog1.FileName;
+            }
         }
     }
 }

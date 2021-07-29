@@ -10,7 +10,7 @@ namespace RelatedEdit
 {
     class DeleteInteractor: sql_interactor
     {
-        public void interactT3(String index)
+        public void interactT3(String index, string change_content)
         {   
             string command1 = "DELETE FROM [T3_Defective2] WHERE [TD3_NO] = " + index;
             List<string> commands = new List<string>();
@@ -19,7 +19,7 @@ namespace RelatedEdit
             delete_helper(commands);
         }
 
-        public void interactT2(String index)
+        public void interactT2(String index, string change_content)
         {
             string command1 = "DELETE FROM [T3_Defective2] WHERE [TD2_NO] = " + index;
             string command2 = "DELETE FROM [T2_Defective] WHERE [TD2_NO] = " + index;
@@ -30,7 +30,7 @@ namespace RelatedEdit
             delete_helper(commands);
         }
 
-        public void interactT1(String index)
+        public void interactT1(String index, string change_content)
         {
             List<string> commands = new List<string>();
             DataTable DT = new DataTable();
@@ -56,7 +56,7 @@ namespace RelatedEdit
 
             foreach (DataRow myRow in DT.Rows)
             {
-                interactT2(myRow[0].ToString());
+                interactT2(myRow[0].ToString(), string.Empty);
             }
 
             commands.Add("DELETE FROM [T1_GX] WHERE [GX_NO] = " + index);

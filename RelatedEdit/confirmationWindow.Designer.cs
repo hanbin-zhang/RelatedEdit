@@ -1,6 +1,6 @@
 ﻿namespace RelatedEdit
 {
-    partial class ConfrimationWindow
+    partial class ConfirmationWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -42,7 +43,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(459, 222);
+            this.button1.Location = new System.Drawing.Point(440, 213);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(80, 34);
             this.button1.TabIndex = 1;
@@ -50,20 +51,30 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // delete_confirmation
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(32, 107);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(255, 22);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.Visible = false;
+            // 
+            // ConfirmationWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 274);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "delete_confirmation";
+            this.Name = "ConfirmationWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "确认删除";
+            this.Text = "确认";
             this.Load += new System.EventHandler(this.delete_confirmation_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -71,5 +82,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

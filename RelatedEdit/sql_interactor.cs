@@ -13,10 +13,10 @@ namespace RelatedEdit
         // 返回一条活动完成后的确认信息
         string getFinishMessage();
         // 与表三互动
-        void interactT3(string index);
+        void interactT3(string index, string change_content);
         // 与表二互动
-        void interactT2(string index);
+        void interactT2(string index, string change_content);
         // 与表一互动
-        void interactT1(string index);
+        void interactT1(string index, string change_content);
     }
 }
