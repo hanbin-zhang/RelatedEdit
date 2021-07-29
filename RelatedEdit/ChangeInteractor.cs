@@ -9,9 +9,9 @@ namespace RelatedEdit
 {
     class ChangeInteractor : sql_interactor
     {
-        public string getConfirmationMessage()
+        public string getConfirmationMessage(string table, string content)
         {
-            return "请在下方输入{0}表中的{1}修改后的内容";
+            return string.Format("请在下方输入{0}表中的{1}修改后的内容", table, content);
         }
 
         public string getFinishMessage()

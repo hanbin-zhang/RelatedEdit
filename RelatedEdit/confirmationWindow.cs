@@ -26,7 +26,7 @@ namespace RelatedEdit
                 textBox1.Visible = true;
                 interactor = new ChangeInteractor();
             }
-            label1.Text = string.Format(interactor.getConfirmationMessage(), table.ToString(), item_name);
+            label1.Text = interactor.getConfirmationMessage(table.ToString(), item_name);
             table_type = table;
             delete_index1 = item_index;
         }

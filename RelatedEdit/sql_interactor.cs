@@ -9,7 +9,7 @@ namespace RelatedEdit
     interface sql_interactor
     {   
         // 返回一条在窗口展示的确认信息
-        string getConfirmationMessage();
+        string getConfirmationMessage(string table, string content);
         // 返回一条活动完成后的确认信息
         string getFinishMessage();
         // 与表三互动

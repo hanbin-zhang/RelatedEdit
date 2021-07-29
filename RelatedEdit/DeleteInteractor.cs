@@ -84,9 +84,9 @@ namespace RelatedEdit
             }
         }
 
-        string sql_interactor.getConfirmationMessage()
+        string sql_interactor.getConfirmationMessage(string table, string content)
         {
-            return "请问确定要删除{0}表下所属的{1}及其所有下属关联项吗？";
+            return String.Format("请问确定要删除{0}表下所属的{1}及其所有下属关联项吗？", table, content);
         }
 
         string sql_interactor.getFinishMessage()
