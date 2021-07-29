@@ -90,6 +90,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddInteractor.cs" />
     <Compile Include="ChangeInteractor.cs" />
     <Compile Include="DeleteInteractor.cs" />
     <Compile Include="Common.cs" />

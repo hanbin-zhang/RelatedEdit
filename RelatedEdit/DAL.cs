@@ -18,8 +18,7 @@ namespace RelatedEdit
                 SqlConnection conn = new SqlConnection(Common.ConnString);
                 System.Diagnostics.Debug.Print(Common.ConnString);
                 string SQL = "SELECT [GX_NO], [GX_NAME] FROM [T1_GX]";
-                using(SqlCommand sc = new SqlCommand(SQL, conn)) {
-                    
+                using(SqlCommand sc = new SqlCommand(SQL, conn)) {                    
                     using (SqlDataAdapter sda = new SqlDataAdapter(sc)) {
                         sda.Fill(DT);
                     }

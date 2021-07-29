@@ -194,5 +194,37 @@ namespace RelatedEdit
             }
             return 1;
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string item_name = "";
+            string item_index = "";
+            DAL.table table_type = DAL.table.T1;
+            if (comboBoxforDelete.SelectedItem == null)
+            {
+                MessageBox.Show("请选择需要操作的类别");
+                return;
+            }
+            else if (comboBoxforDelete.SelectedItem.ToString() == "T2 错误1")
+            {
+                if (gridView1.GetFocusedRowCellValue("Index") == null) { MessageBox.Show("请先选择新增项的母项"); return; }
+                item_index = gridView1.GetFocusedRowCellValue("Index").ToString();
+                item_name = gridView1.GetFocusedRowCellValue("Name").ToString();
+                table_type = DAL.table.T2;
+            }
+            else if (comboBoxforDelete.SelectedItem.ToString() == "T3 错误2")
+            {
+                if (gridView2.GetFocusedRowCellValue("Index") == null) { MessageBox.Show("请先选择新增项的母项"); return; }
+                item_index = gridView2.GetFocusedRowCellValue("Index").ToString();
+                item_name = gridView2.GetFocusedRowCellValue("Name").ToString();
+                table_type = DAL.table.T3;
+            }
+
+            Form confirmation_form = new ConfirmationWindow(item_name, table_type, item_index, interaction_type.add);
+            confirmation_form.ShowDialog();
+
+            // 重新加载窗体
+            Reload_form();
+        }
     }
 }

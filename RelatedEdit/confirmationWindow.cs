@@ -26,7 +26,12 @@ namespace RelatedEdit
                 textBox1.Visible = true;
                 interactor = new ChangeInteractor();
             }
-            label1.Text = interactor.getConfirmationMessage(table.ToString(), item_name);
+            else if (type == interaction_type.add)
+            {
+                textBox1.Visible = true;
+                interactor = new AddInteractor();
+            }
+            label1.Text = interactor.getConfirmationMessage(table, item_name);
             table_type = table;
             delete_index1 = item_index;
         }

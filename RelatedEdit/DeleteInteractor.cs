@@ -68,15 +68,15 @@ namespace RelatedEdit
             try
             {
                 SqlConnection conn = new SqlConnection(Common.ConnString);
+                conn.Open();
                 foreach (String command in commands)
                 {
-                    conn.Open();
                     using (SqlCommand sc = new SqlCommand(command, conn))
                     {
                         sc.ExecuteNonQuery();
                     }
-                    conn.Close();
                 }
+                conn.Close();
             }
             catch (Exception ex)
             {
@@ -84,9 +84,9 @@ namespace RelatedEdit
             }
         }
 
-        string sql_interactor.getConfirmationMessage(string table, string content)
+        string sql_interactor.getConfirmationMessage(DAL.table table, string content)
         {
-            return String.Format("请问确定要删除{0}表下所属的{1}及其所有下属关联项吗？", table, content);
+            return String.Format("请问确定要删除{0}表下所属的{1}及其所有下属关联项吗？", table.ToString(), content);
         }
 
         string sql_interactor.getFinishMessage()
