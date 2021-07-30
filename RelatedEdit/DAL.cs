@@ -57,6 +57,7 @@ namespace RelatedEdit
                 sda.Fill(DT);
                 DT.Columns[0].ColumnName = "Index";
                 DT.Columns[1].ColumnName = "Name";
+                conn.Close();
             }
             catch (Exception ex)
             {

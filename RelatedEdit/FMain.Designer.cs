@@ -56,6 +56,11 @@
             // 
             // gridControl1
             // 
+            this.gridControl1.EmbeddedNavigator.Appearance.BackColor = System.Drawing.Color.Maroon;
+            this.gridControl1.EmbeddedNavigator.Appearance.ForeColor = System.Drawing.Color.Brown;
+            this.gridControl1.EmbeddedNavigator.Appearance.Options.UseBackColor = true;
+            this.gridControl1.EmbeddedNavigator.Appearance.Options.UseBorderColor = true;
+            this.gridControl1.EmbeddedNavigator.Appearance.Options.UseForeColor = true;
             this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(8);
             this.gridControl1.Location = new System.Drawing.Point(24, 25);
             this.gridControl1.MainView = this.gridView1;
@@ -70,6 +75,14 @@
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.ColumnFilterButton.BackColor = System.Drawing.Color.Red;
+            this.gridView1.Appearance.ColumnFilterButton.BorderColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.Maroon;
+            this.gridView1.Appearance.ColumnFilterButton.Options.UseBackColor = true;
+            this.gridView1.Appearance.ColumnFilterButton.Options.UseBorderColor = true;
+            this.gridView1.Appearance.ColumnFilterButton.Options.UseForeColor = true;
+            this.gridView1.Appearance.GroupPanel.BackColor = System.Drawing.Color.Red;
+            this.gridView1.Appearance.GroupPanel.Options.UseBackColor = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2});
