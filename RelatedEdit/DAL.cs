@@ -36,7 +36,8 @@ namespace RelatedEdit
         {
             T1,
             T2,
-            T3
+            T3,
+            Null
         }
         public static DataTable LoadDefectiveData(int Index, table tableNumber)
         {

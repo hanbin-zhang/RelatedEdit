@@ -41,11 +41,12 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.button2 = new System.Windows.Forms.Button();
-            this.comboBoxforDelete = new System.Windows.Forms.ComboBox();
             this.delete_button = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
@@ -83,6 +84,13 @@
             this.gridView1.Appearance.ColumnFilterButton.Options.UseForeColor = true;
             this.gridView1.Appearance.GroupPanel.BackColor = System.Drawing.Color.Red;
             this.gridView1.Appearance.GroupPanel.Options.UseBackColor = true;
+            this.gridView1.Appearance.ViewCaption.BackColor = System.Drawing.Color.DarkSalmon;
+            this.gridView1.Appearance.ViewCaption.BackColor2 = System.Drawing.Color.Blue;
+            this.gridView1.Appearance.ViewCaption.BorderColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.ViewCaption.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.ViewCaption.Options.UseBackColor = true;
+            this.gridView1.Appearance.ViewCaption.Options.UseBorderColor = true;
+            this.gridView1.Appearance.ViewCaption.Options.UseForeColor = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2});
@@ -93,6 +101,8 @@
             this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowViewCaption = true;
             this.gridView1.ViewCaption = "T1";
@@ -129,6 +139,7 @@
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
             this.gridControl2.Click += new System.EventHandler(this.gridControl2_Click);
+            this.gridControl2.DoubleClick += new System.EventHandler(this.gridControl2_DoubleClick);
             // 
             // gridView2
             // 
@@ -177,6 +188,7 @@
             this.gridControl3.TabIndex = 3;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
+            this.gridControl3.DoubleClick += new System.EventHandler(this.gridControl3_DoubleClick);
             // 
             // gridView3
             // 
@@ -224,19 +236,9 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // comboBoxforDelete
-            // 
-            this.comboBoxforDelete.FormattingEnabled = true;
-            this.comboBoxforDelete.Location = new System.Drawing.Point(915, 72);
-            this.comboBoxforDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxforDelete.Name = "comboBoxforDelete";
-            this.comboBoxforDelete.Size = new System.Drawing.Size(134, 21);
-            this.comboBoxforDelete.TabIndex = 6;
-            this.comboBoxforDelete.Text = "选择需要操作的类别";
-            // 
             // delete_button
             // 
-            this.delete_button.Location = new System.Drawing.Point(822, 68);
+            this.delete_button.Location = new System.Drawing.Point(822, 105);
             this.delete_button.Margin = new System.Windows.Forms.Padding(2);
             this.delete_button.Name = "delete_button";
             this.delete_button.Size = new System.Drawing.Size(89, 25);
@@ -247,7 +249,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(822, 226);
+            this.button3.Location = new System.Drawing.Point(822, 257);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(89, 25);
@@ -258,7 +260,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(822, 119);
+            this.button4.Location = new System.Drawing.Point(822, 154);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(89, 25);
@@ -269,7 +271,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(822, 171);
+            this.button5.Location = new System.Drawing.Point(822, 206);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(89, 25);
@@ -278,16 +280,36 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(922, 67);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "双击表以选中表";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(826, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "当前选中表：";
+            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1087, 687);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.delete_button);
-            this.Controls.Add(this.comboBoxforDelete);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.gridControl3);
             this.Controls.Add(this.gridControl2);
@@ -303,6 +325,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -321,11 +344,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBoxforDelete;
         private System.Windows.Forms.Button delete_button;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

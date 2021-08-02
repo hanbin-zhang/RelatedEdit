@@ -13,10 +13,11 @@ namespace RelatedEdit
 {
     public partial class FMain : Form
     {
+        DAL.table table_type;
         public FMain()
         {
             InitializeComponent();
-            InitializecomboBoxforDelete(comboBoxforDelete);
+            table_type = DAL.table.Null;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -52,7 +53,10 @@ namespace RelatedEdit
 
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
-            
+            this.table_type = DAL.table.T1;
+            grid_view_restore_helper();
+            selected_table_helper(gridView1);
+            label1.Text = table_type.ToString();
         }
 
         private void gridControl2_Click(object sender, EventArgs e)
@@ -76,14 +80,6 @@ namespace RelatedEdit
                     gridView3.RefreshData();
                 }
             }
-        }
-
-        public static void InitializecomboBoxforDelete (ComboBox comboBoxforDelete)
-        {
-            comboBoxforDelete.Items.Add("T1 GX项");
-            comboBoxforDelete.Items.Add("T2 错误1");
-            comboBoxforDelete.Items.Add("T3 错误2");
-
         }
 
         public void Reload_form(DAL.table table_type, int index)
@@ -120,12 +116,12 @@ namespace RelatedEdit
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int a = gridViewselectHelper(out string item_name, out string item_index, out DAL.table table_type);
+            int a = gridViewselectHelper(out string item_name, out string item_index);
 
             if (a == 0) return;
             // 打开确认删除窗口
             // 打开确认窗口, c
-            Form confirmation_form = new ConfirmationWindow(item_name, table_type, item_index, interaction_type.change);
+            Form confirmation_form = new ConfirmationWindow(item_name, this.table_type, item_index, interaction_type.change);
             confirmation_form.ShowDialog();
 
             // 重新加载窗体
@@ -134,47 +130,43 @@ namespace RelatedEdit
 
         private void delete_click(object sender, EventArgs e)
         {
-            int a = gridViewselectHelper(out string item_name, out string item_index, out DAL.table table_type);
+            int a = gridViewselectHelper(out string item_name, out string item_index);
             if (a == 0) return;
             // 打开确认删除窗口
             // 打开确认窗口, c
-            Form confirmation_form = new ConfirmationWindow(item_name, table_type, item_index, interaction_type.delete);
+            Form confirmation_form = new ConfirmationWindow(item_name, this.table_type, item_index, interaction_type.delete);
             confirmation_form.ShowDialog();
 
             // 重新加载窗体
             Reload_form(table_type, Convert.ToInt32(item_index));
         }
 
-        private int gridViewselectHelper(out string item_name, out String item_index, out DAL.table table_type)
+        private int gridViewselectHelper(out string item_name, out String item_index)
         {
             item_name = "";
             item_index = "";
-            table_type = DAL.table.T1;
-            if (comboBoxforDelete.SelectedItem == null)
+            if (this.table_type == DAL.table.Null)
             {
-                MessageBox.Show("请选择需要操作的类别");
+                MessageBox.Show("请选择需要操作的类别（双击以选中）");
                 return 0;
             }
-            else if (comboBoxforDelete.SelectedItem.ToString() == "T1 GX项")
+            else if (this.table_type == DAL.table.T1)
             {
                 if (gridView1.GetFocusedRowCellValue("Index") == null) { MessageBox.Show("请先选择需要操作的项"); return 0; }
                 item_index = gridView1.GetFocusedRowCellValue("Index").ToString();
                 item_name = gridView1.GetFocusedRowCellValue("Name").ToString();
-                table_type = DAL.table.T1;
             }
-            else if (comboBoxforDelete.SelectedItem.ToString() == "T2 错误1")
+            else if (this.table_type == DAL.table.T2)
             {
                 if (gridView2.GetFocusedRowCellValue("Index") == null) { MessageBox.Show("请先选择需要操作的项"); return 0; }
                 item_index = gridView2.GetFocusedRowCellValue("Index").ToString();
                 item_name = gridView2.GetFocusedRowCellValue("Name").ToString();
-                table_type = DAL.table.T2;
             }
-            else if (comboBoxforDelete.SelectedItem.ToString() == "T3 错误2")
+            else if (this.table_type == DAL.table.T3)
             {
                 if (gridView3.GetFocusedRowCellValue("Index") == null) { MessageBox.Show("请先选择需要操作的项"); return 0; }
                 item_index = gridView3.GetFocusedRowCellValue("Index").ToString();
                 item_name = gridView3.GetFocusedRowCellValue("Name").ToString();
-                table_type = DAL.table.T3;
             }
             return 1;
         }
@@ -182,33 +174,70 @@ namespace RelatedEdit
         private void button5_Click(object sender, EventArgs e)
         {
             string item_name = "";
-            string item_index = "";
-            DAL.table table_type = DAL.table.T1;
-            if (comboBoxforDelete.SelectedItem == null)
+            string item_index = "-1";
+            if (this.table_type == DAL.table.Null)
             {
-                MessageBox.Show("请选择需要操作的类别");
+                MessageBox.Show("请选择需要操作的类别（双击以选中）");
                 return;
             }
-            else if (comboBoxforDelete.SelectedItem.ToString() == "T2 错误1")
+            else if (this.table_type == DAL.table.T2)
             {
                 if (gridView1.GetFocusedRowCellValue("Index") == null) { MessageBox.Show("请先选择新增项的母项"); return; }
                 item_index = gridView1.GetFocusedRowCellValue("Index").ToString();
                 item_name = gridView1.GetFocusedRowCellValue("Name").ToString();
-                table_type = DAL.table.T2;
             }
-            else if (comboBoxforDelete.SelectedItem.ToString() == "T3 错误2")
+            else if (this.table_type == DAL.table.T3)
             {
                 if (gridView2.GetFocusedRowCellValue("Index") == null) { MessageBox.Show("请先选择新增项的母项"); return; }
                 item_index = gridView2.GetFocusedRowCellValue("Index").ToString();
                 item_name = gridView2.GetFocusedRowCellValue("Name").ToString();
-                table_type = DAL.table.T3;
             }
 
-            Form confirmation_form = new ConfirmationWindow(item_name, table_type, item_index, interaction_type.add);
+            Form confirmation_form = new ConfirmationWindow(item_name, this.table_type, item_index, interaction_type.add);
             confirmation_form.ShowDialog();
 
             // 重新加载窗体
             Reload_form(table_type, Convert.ToInt32(item_index));
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        // a helper method used to change the apperance of gridview when it is double clicked
+        private void selected_table_helper(DevExpress.XtraGrid.Views.Grid.GridView gridView)
+        {
+            gridView.Appearance.ViewCaption.ForeColor = Color.Blue;
+            gridView.Appearance.ViewCaption.BackColor = Color.Yellow;
+            gridView.Appearance.ViewCaption.Font = new Font(gridView.Appearance.ViewCaption.Font.FontFamily, gridView.Appearance.ViewCaption.Font.Size+2, FontStyle.Bold);
+        }
+
+        // a helper method which restore all the viewcaption to default status
+        private void grid_view_restore_helper()
+        {
+            DevExpress.XtraGrid.Views.Grid.GridView[] gridViews = { gridView1, gridView2, gridView3};
+            foreach (DevExpress.XtraGrid.Views.Grid.GridView gridView in gridViews)
+            {
+                gridView.Appearance.ViewCaption.ForeColor = Color.Black;
+                gridView.Appearance.ViewCaption.Font = new Font(gridView.Appearance.ViewCaption.Font.FontFamily, Convert.ToSingle(8.5));
+            }
+        }
+
+        private void gridControl2_DoubleClick(object sender, EventArgs e)
+        {
+            this.table_type = DAL.table.T2;
+            grid_view_restore_helper();
+            selected_table_helper(gridView2);
+            label1.Text = table_type.ToString();
+        }
+
+        private void gridControl3_DoubleClick(object sender, EventArgs e)
+        {
+            this.table_type = DAL.table.T3;
+            grid_view_restore_helper();
+            selected_table_helper(gridView3);
+            label1.Text = table_type.ToString();
         }
     }
 }
