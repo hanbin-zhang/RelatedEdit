@@ -15,6 +15,7 @@ namespace RelatedEdit
         private readonly DAL.table table_type;
         readonly String delete_index1;
         readonly sql_interactor interactor;
+        readonly interaction_type interaction_Type;
 
         public ConfirmationWindow(string item_name, DAL.table table, String item_index, interaction_type type)
         {
@@ -34,6 +35,7 @@ namespace RelatedEdit
             label1.Text = interactor.getConfirmationMessage(table, item_name);
             table_type = table;
             delete_index1 = item_index;
+            interaction_Type = type;
         }
 
         private void delete_confirmation_Load(object sender, EventArgs e)
@@ -50,16 +52,43 @@ namespace RelatedEdit
                 return;
             }
             if (table_type == DAL.table.T3)
-            {
-                interactor.interactT3(delete_index1, textBox1.Text);
+            {   
+                try {
+                    interactor.interactT3(delete_index1, textBox1.Text);
+                }
+                
+                catch(ArgumentException)
+                {    
+                        MessageBox.Show("请勿输入重复名字");
+                        return;
+                }
             }
             else if (table_type == DAL.table.T2)
-            {
-                interactor.interactT2(delete_index1, textBox1.Text);
+            {   
+                try
+                {
+                    interactor.interactT2(delete_index1, textBox1.Text);
+                }
+
+
+                catch(ArgumentException)
+                {
+                    MessageBox.Show("请勿输入重复名字");
+                    return;
+                }
             }
             else if (table_type == DAL.table.T1)
             {
-                interactor.interactT1(delete_index1, textBox1.Text);
+                try
+                {
+                    interactor.interactT1(delete_index1, textBox1.Text);
+                }
+
+                catch (ArgumentException)
+                {
+                    MessageBox.Show("请勿输入重复名字");
+                    return;
+                }
             }
             MessageBox.Show(interactor.getFinishMessage());
             this.Close();

@@ -25,29 +25,52 @@ namespace RelatedEdit
         {
             String getIndexCommand = "SELECT TOP (1) [GX_NO] FROM [NCMR].[dbo].[T1_GX] ORDER BY ID desc";
             String addCommand = "INSERT INTO T1_GX (GX_NO, GX_NAME) VALUES ({0}, '" + change_content + "')";
-            add_helper(getIndexCommand, addCommand);
+            String checkDuplicateCommand = string.Format("select count(*) from T1_GX where GX_NAME = '{0}';", change_content);
+            add_helper(getIndexCommand, addCommand, checkDuplicateCommand);
         }
 
         public void interactT2(string index, string change_content)
         {
             String getIndexCommand = "SELECT TOP (1) [TD2_NO] FROM [T2_Defective] ORDER BY ID desc";
             String addCommand = "INSERT INTO T2_Defective ([GX_NO], [TD2_NO], [Defective]) VALUES (" + index + ", " + "{0}, '" + change_content + "')";
-            add_helper(getIndexCommand, addCommand);
+            String checkDuplicateCommand = string.Format("select count(*) from T2_Defective where Defective = '{0}' and GX_NO = {1};", change_content, index);
+            add_helper(getIndexCommand, addCommand, checkDuplicateCommand);
         }
 
         public void interactT3(string index, string change_content)
         {
             String getIndexCommand = "SELECT TOP (1) [TD3_NO] FROM [T3_Defective2] ORDER BY ID desc";
             String addCommand = "INSERT INTO T3_Defective2 ([TD2_NO], [TD3_NO], [Defective2]) VALUES (" + index + ", " + "{0}, '" + change_content + "')";
-            add_helper(getIndexCommand, addCommand);
-        }
-
-        private void add_helper(String getIndexCommand, String addCommand)
-        {
+            String checkDuplicateCommand = string.Format("select count(*) from T3_Defective2 where Defective2 = '{0}' and TD2_NO = {1};", change_content, index);
             try
             {
+                add_helper(getIndexCommand, addCommand, checkDuplicateCommand);
+            }
+
+            catch(ArgumentException)
+            {
+                throw new ArgumentException("duplicate name");
+            }
+            
+        }
+
+        private void add_helper(String getIndexCommand, String addCommand, string checkDuplicateCommand)
+        {
+            
                 SqlConnection conn = new SqlConnection(Common.ConnString);
                 conn.Open();
+
+                using(SqlCommand sc = new SqlCommand(checkDuplicateCommand, conn))
+                {
+                    using(SqlDataReader sdr = sc.ExecuteReader())
+                    {
+                        sdr.Read();
+                        IDataRecord idr = (IDataRecord)sdr;
+                    int n = Convert.ToInt32(idr[0]);
+                    if (Convert.ToInt32(idr[0]) > 0) { throw new ArgumentException("duplicate name"); }
+                    }
+                }
+
                 DataTable DT = new DataTable();
                 int index;
                 using (SqlCommand sc = new SqlCommand(getIndexCommand, conn))
@@ -65,10 +88,7 @@ namespace RelatedEdit
                 }
                 conn.Close();
             }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Print(ex.Message);
-            }
+           
         }
-    }
 }
+
