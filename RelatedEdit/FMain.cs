@@ -18,6 +18,7 @@ namespace RelatedEdit
         {
             InitializeComponent();
             table_type = DAL.table.Null;
+            grid_view_restore_helper();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -210,7 +211,7 @@ namespace RelatedEdit
         {
             gridView.Appearance.ViewCaption.ForeColor = Color.Blue;
             gridView.Appearance.ViewCaption.BackColor = Color.Yellow;
-            gridView.Appearance.ViewCaption.Font = new Font(gridView.Appearance.ViewCaption.Font.FontFamily, gridView.Appearance.ViewCaption.Font.Size+2, FontStyle.Bold);
+            gridView.Appearance.ViewCaption.Font = new Font(gridView.Appearance.ViewCaption.Font.FontFamily, gridView.Appearance.ViewCaption.Font.Size, FontStyle.Bold);
         }
 
         // a helper method which restore all the viewcaption to default status
@@ -220,7 +221,7 @@ namespace RelatedEdit
             foreach (DevExpress.XtraGrid.Views.Grid.GridView gridView in gridViews)
             {
                 gridView.Appearance.ViewCaption.ForeColor = Color.Black;
-                gridView.Appearance.ViewCaption.Font = new Font(gridView.Appearance.ViewCaption.Font.FontFamily, Convert.ToSingle(8.5));
+                gridView.Appearance.ViewCaption.Font = new Font(gridView.Appearance.ViewCaption.Font.FontFamily, Convert.ToSingle(12));
             }
         }
 
