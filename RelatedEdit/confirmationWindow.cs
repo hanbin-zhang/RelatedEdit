@@ -25,6 +25,7 @@ namespace RelatedEdit
             else if(type == interaction_type.change)
             {
                 textBox1.Visible = true;
+                textBox1.Text = item_name;
                 interactor = new ChangeInteractor();
             }
             else if (type == interaction_type.add)
@@ -46,10 +47,13 @@ namespace RelatedEdit
 
         private void button1_Click(object sender, EventArgs e)
         {   
-            if (textBox1.Visible && textBox1.Text == string.Empty)
+            if (textBox1.Visible)
             {
-                MessageBox.Show("请输入更改后的内容");
-                return;
+                if (textBox1.Text == string.Empty)
+                {
+                    MessageBox.Show("请输入更改后的内容");
+                    return;
+                }
             }
             if (table_type == DAL.table.T3)
             {   
