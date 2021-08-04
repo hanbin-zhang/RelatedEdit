@@ -140,6 +140,18 @@ namespace RelatedEdit
 
             // 重新加载窗体
             Reload_form(table_type, Convert.ToInt32(item_index));
+            if (table_type == DAL.table.T2)
+            {
+                gridControl3.DataSource = new DataTable();
+                gridView3.RefreshData();
+            }
+            else if(table_type == DAL.table.T1)
+            {
+                gridControl2.DataSource = new DataTable();
+                gridView2.RefreshData();
+                gridControl3.DataSource = new DataTable();
+                gridView3.RefreshData();
+            }
         }
 
         private int gridViewselectHelper(out string item_name, out String item_index)
