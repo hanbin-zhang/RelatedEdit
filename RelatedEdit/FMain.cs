@@ -14,6 +14,7 @@ namespace RelatedEdit
     public partial class FMain : Form
     {
         DAL.table table_type;
+        string t1_selected_type;
         public FMain()
         {
             InitializeComponent();
@@ -34,11 +35,13 @@ namespace RelatedEdit
             {
                 return;
             }
-
-            if (gridView1.GetFocusedRow() != null)
+            if (gridView1.GetFocusedRowCellValue("Index").ToString() == t1_selected_type) return;
+            else if (gridView1.GetFocusedRow() != null)
             {
-                string cellvalue =  gridView1.GetFocusedRowCellValue("Index").ToString();
-
+                string cellvalue = gridView1.GetFocusedRowCellValue("Index").ToString();
+                t1_selected_type = cellvalue;
+                gridControl3.DataSource = new DataTable();
+                gridView3.RefreshData();
                 int index = -1;
 
                 if (int.TryParse(cellvalue, out index))
@@ -47,7 +50,7 @@ namespace RelatedEdit
                     //绑定T2数据到子列表
                     gridControl2.DataSource = DT;
                     gridView2.RefreshData();
-                
+
                 }
             }
         }
