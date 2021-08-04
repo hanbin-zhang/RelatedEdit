@@ -26,11 +26,19 @@ namespace RelatedEdit
         {
             gridControl1.DataSource = DAL.LoadT1Data();
             gridView1.RefreshData();
+            gridControl2.DataSource = new DataTable();
+            gridView2.RefreshData();
+            gridControl3.DataSource = new DataTable();
+            gridView3.RefreshData();
         }
 
 
         private void gridControl1_Click(object sender, EventArgs e)
-        {   
+        {
+            this.table_type = DAL.table.T1;
+            grid_view_restore_helper();
+            selected_table_helper(gridView1);
+            label1.Text = table_type.ToString();
             if (gridView1.RowCount == 0)
             {
                 return;
@@ -57,14 +65,16 @@ namespace RelatedEdit
 
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
-            this.table_type = DAL.table.T1;
-            grid_view_restore_helper();
-            selected_table_helper(gridView1);
-            label1.Text = table_type.ToString();
+            
         }
 
         private void gridControl2_Click(object sender, EventArgs e)
         {
+            this.table_type = DAL.table.T2;
+            grid_view_restore_helper();
+            selected_table_helper(gridView2);
+            label1.Text = table_type.ToString();
+
             if (gridView2.RowCount == 0)
             {
                 return;
@@ -242,13 +252,15 @@ namespace RelatedEdit
 
         private void gridControl2_DoubleClick(object sender, EventArgs e)
         {
-            this.table_type = DAL.table.T2;
-            grid_view_restore_helper();
-            selected_table_helper(gridView2);
-            label1.Text = table_type.ToString();
+            
         }
 
         private void gridControl3_DoubleClick(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void gridControl3_Click(object sender, EventArgs e)
         {
             this.table_type = DAL.table.T3;
             grid_view_restore_helper();

@@ -188,6 +188,7 @@
             this.gridControl3.TabIndex = 3;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
+            this.gridControl3.Click += new System.EventHandler(this.gridControl3_Click);
             this.gridControl3.DoubleClick += new System.EventHandler(this.gridControl3_DoubleClick);
             // 
             // gridView3
