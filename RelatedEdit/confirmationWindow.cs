@@ -97,5 +97,21 @@ namespace RelatedEdit
             MessageBox.Show(interactor.getFinishMessage());
             this.Close();
         }
+
+        private void ConfirmationWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1.PerformClick();
+            }
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1.PerformClick();
+            }
+        }
     }
 }

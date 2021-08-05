@@ -41,9 +41,10 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label1.Location = new System.Drawing.Point(71, 124);
+            this.label1.Location = new System.Drawing.Point(53, 101);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(243, 37);
+            this.label1.Size = new System.Drawing.Size(182, 30);
             this.label1.TabIndex = 1;
             this.label1.Text = "导出路径：";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -51,13 +52,15 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.button1.Location = new System.Drawing.Point(432, 204);
+            this.button1.Location = new System.Drawing.Point(324, 166);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 34);
+            this.button1.Size = new System.Drawing.Size(60, 28);
             this.button1.TabIndex = 2;
             this.button1.Text = "确定";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button1_KeyDown);
             // 
             // saveFileDialog1
             // 
@@ -65,33 +68,39 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(213, 124);
+            this.textBox1.Location = new System.Drawing.Point(160, 101);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(260, 22);
+            this.textBox1.Size = new System.Drawing.Size(196, 20);
             this.textBox1.TabIndex = 3;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(50, 72);
+            this.button2.Location = new System.Drawing.Point(38, 58);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 34);
+            this.button2.Size = new System.Drawing.Size(80, 28);
             this.button2.TabIndex = 4;
             this.button2.Text = "选择路径";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button2_KeyDown);
             // 
             // ExportToExcel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 274);
+            this.ClientSize = new System.Drawing.Size(424, 223);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ExportToExcel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "请选择导出路径";
+            this.Load += new System.EventHandler(this.ExportToExcel_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ExportToExcel_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.spreadsheetBarController1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

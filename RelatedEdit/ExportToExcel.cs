@@ -61,6 +61,7 @@ namespace RelatedEdit
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return;
             }
             MessageBox.Show("导出成功");
             this.Close();
@@ -78,15 +79,40 @@ namespace RelatedEdit
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.saveFileDialog1.InitialDirectory = @".\export files";
-            this.saveFileDialog1.Filter = "EXCEL FILE WITH MACRO(*.xlsm)|*.xlsm";
-            this.saveFileDialog1.RestoreDirectory = true;
-            this.saveFileDialog1.FileName = String.Format("SavedDocument-{0}.xlsx", DateTime.Now.ToString("yyyyMMdd"));
 
             DialogResult dr = this.saveFileDialog1.ShowDialog();
             if (dr == DialogResult.OK && this.saveFileDialog1.FileName.Length > 0)
             {
                 this.textBox1.Text = saveFileDialog1.FileName;
+            }
+        }
+
+        private void ExportToExcel_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ExportToExcel_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1.PerformClick();
+            }
+        }
+
+        private void button2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1.PerformClick();
+            }
+        }
+
+        private void button1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1.PerformClick();
             }
         }
     }
