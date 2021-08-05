@@ -173,7 +173,7 @@ namespace RelatedEdit
             item_index = "";
             if (this.table_type == DAL.table.Null)
             {
-                MessageBox.Show("请选择需要操作的类别（双击以选中）");
+                MessageBox.Show("请选择需要操作的类别");
                 return 0;
             }
             else if (this.table_type == DAL.table.T1)
@@ -203,7 +203,7 @@ namespace RelatedEdit
             string item_index = "-1";
             if (this.table_type == DAL.table.Null)
             {
-                MessageBox.Show("请选择需要操作的类别（双击以选中）");
+                MessageBox.Show("请选择需要操作的类别");
                 return;
             }
             else if (this.table_type == DAL.table.T2)
